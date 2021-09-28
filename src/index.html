@@ -1,46 +1,60 @@
 <!DOCTYPE html>
 <html>
-	<head>
-			<meta charset="utf-8" />
-			<title>Todo list</title>
-	</head>
 
-	<body>
-			<h1></h1>
-			
-			 <div id="add-button" onclick="openForm()">add</div>
-			 
-			 <div id="containerText" class="block">
-					<span class="columnsText">uninitiated</span>
-					<span class="columnsText">initiated</span>
-					<span class="columnsText">finished</span>
-			</div>
-			<div id="container" class="block">
-					<div id="uninitiated" class="columns">
-						<div id="uninitiated1" class="items">todo1</div>
-					</div>
-					<div id="initiated" class="columns">
-						<div id="initiated1" class="items">todo1</div>
-						<div id="initiated2" class="items">todo1</div>
-					</div>
-					<div id="finished" class="columns">
-					</div>
-			</div>
-	
-	<div class="form-popup" id="myForm">
-  	<form class="form-container">
-			<h1>Add task</h1>
+  <head>
+    <meta charset="utf-8" />
+    <title>Todo list</title>
+  </head>
 
-			<label for="title"><b>Title</b></label><br>
-			<input type="text" placeholder="Enter title" name="title" required>
+  <body>
+    <h1></h1>
 
-			<label for="description"><b>Description</b></label><br>
-			<input type="text" placeholder="Enter a description" name="description" required>
+    <div id="add-button" onclick="openForm()">add</div>
 
-			<button type="button" class="btn">Add</button>
-			<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
- 	  </form>
-	</div>
-	
-	</body>
+    <div id="containerText" class="block">
+      <span class="columnsText">uninitiated</span>
+      <span class="columnsText">initiated</span>
+      <span class="columnsText">finished</span>
+    </div>
+    <div id="container" class="block">
+      <div id="uninitiated" class="columns">
+        <div id="uninitiated1" class="items">todo1</div>
+      </div>
+      <div id="initiated" class="columns">
+        <div id="initiated1" class="items">todo2</div>
+        <div id="initiated2" class="items">todo3</div>
+      </div>
+      <div id="finished" class="columns">
+      </div>
+    </div>
+
+    <div class="form-popup" id="myForm">
+      <form class="form-container">
+        <h1>Add task</h1>
+
+        <label for="title"><b>Title</b></label><br>
+        <input type="text" placeholder="Enter title" id="title" name="title" required>
+
+        <label for="description"><b>Description</b></label><br>
+        <input type="text" placeholder="Enter a description" id="description" name="description" required>
+
+        <button id="addButton" type="button" class="btn">Add</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      </form>
+    </div>
+		
+   <div class="form-popup" id="myTask">
+      <form class="form-container">
+        <h1>Task details</h1>
+
+        <label for="title"><b></b></label><br>
+
+        <input type="text" placeholder="Enter a description" id="descriptionTask" name="description">
+
+        <button id="saveButton" type="button" class="btn">Add</button>
+        <button id="cancelButton" type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      </form>
+    </div>
+  </body>
+
 </html>
