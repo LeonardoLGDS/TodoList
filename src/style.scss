@@ -5,20 +5,20 @@ body {
 }
 
 #add-button {
-	box-shadow: 0px 0px 10px black;
-	border-radius: 20px 20px;
-	margin: 15px;
-	cursor: pointer;
+  box-shadow: 0px 0px 10px black;
+  border-radius: 20px 20px;
+  margin: 15px;
+  cursor: pointer;
 }
 
 #add-button:hover {
-    background-color: rgb(241, 238, 238)
+  background-color: rgb(241, 238, 238);
 }
 
 #add-button:active {
-    background-color: rgb(241, 238, 238);
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+  background-color: rgb(241, 238, 238);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 #containerText {
@@ -27,11 +27,11 @@ body {
 
 .columnsText {
   width: 400px;
-	flex: 0 1 auto;
-	border-radius: 20px 20px;
-	box-shadow: 0px 0px 10px black;
-	padding: 6px;
-	margin: 9px;
+  flex: 0 1 auto;
+  border-radius: 20px 20px;
+  box-shadow: 0px 0px 10px black;
+  padding: 6px;
+  margin: 9px;
 }
 
 #container {
@@ -40,41 +40,44 @@ body {
 }
 
 .columns {
-	width: 400px;
+  width: 400px;
   flex: 0 1 auto;
   display: flex;
   flex-direction: column;
-	color: white;
-	align-items: center;
-	border-radius: 20px 20px;
-	box-shadow: 0px 0px 10px black;
+  color: white;
+  align-items: center;
+  border-radius: 20px 20px;
+  box-shadow: 0px 0px 10px black;
 }
 
 .items {
-	border-radius: 20px 20px;
-	height: 30px;
-	width: 300px;
-	margin: 10px;
-	box-shadow: 0px 0px 10px black;
-	border: 1px solid;
-	
+  border-radius: 20px 20px;
+  height: 30px;
+  width: 300px;
+  margin: 10px;
+  box-shadow: 0px 0px 10px black;
+  border: 1px solid;
+	color: black;
+
 }
-	
+
 .form-popup {
   display: none;
- 	right: 33vw;
-	top: 15vh;
+  right: 33vw;
+  top: 15vh;
   z-index: 9;
-	position: absolute;
-	
+  position: absolute;
+
 }
+
 .form-container {
   max-width: 300px;
   padding: 10px;
   background-color: white;
-	box-shadow: 0px 0px 7px black;
-	border-radius: 20px 20px;
+  box-shadow: 0px 0px 7px black;
+  border-radius: 20px 20px;
 }
+
 .form-container input[type=text] {
   width: 75%;
   padding: 15px;
@@ -82,7 +85,9 @@ body {
   border: none;
   background: #f1f1f1;
 }
-.form-container input[type=text]:focus, .form-container input[type=text]:focus {
+
+.form-container input[type=text]:focus,
+.form-container input[type=text]:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -97,9 +102,11 @@ body {
   margin-bottom: 10px;
   opacity: 0.8;
 }
+
 .form-container .cancel {
   background-color: red;
 }
+
 .form-container .btn:hover {
   opacity: 1;
 }
