@@ -9,7 +9,7 @@
   <body>
     <h1></h1>
 
-    <div id="add-button" onclick="openForm()">add</div>
+    <div id="buttonAtIndexAdd" onclick="openForm()">add</div>
 
     <div id="containerText" class="block">
       <span class="columnsText">uninitiated</span>
@@ -18,17 +18,14 @@
     </div>
     <div id="container" class="block">
       <div id="uninitiated" class="columns">
-        <div id="uninitiated1" class="items">todo1</div>
       </div>
       <div id="initiated" class="columns">
-        <div id="initiated1" class="items">todo2</div>
-        <div id="initiated2" class="items">todo3</div>
       </div>
       <div id="finished" class="columns">
       </div>
     </div>
 
-    <div class="form-popup" id="myForm">
+    <div class="form-popup" id="indexAddTask">
       <form class="form-container">
         <h1>Add task</h1>
 
@@ -45,14 +42,18 @@
 		
    <div class="form-popup" id="myTask">
       <form class="form-container">
-        <h1>Task details</h1>
+        <h2>Task details</h2>
+	
+        <h3 id="taskTitle"><b></b></h3><br>
+				<label id="dueDate"><b></b></label><br>
+				<label id="priority"><b></b></label><br>
+				
+        <input type="text" placeholder="Enter a description" id="taskDescription" name="description">
 
-        <label for="title"><b></b></label><br>
-
-        <input type="text" placeholder="Enter a description" id="descriptionTask" name="description">
-
-        <button id="saveButton" type="button" class="btn">Add</button>
-        <button id="cancelButton" type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        <button id="saveButton" type="button" class="btn save">Save</button>
+				<button id="nextButton" type="button" class="btn next">Next</button>
+        <button id="deleteButton" type="button" class="btn delete">Delete</button>
+				<button id="cancelButton" type="button" class="btn cancel" onclick="closeItem()">Close</button>
       </form>
     </div>
   </body>
