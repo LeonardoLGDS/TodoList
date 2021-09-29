@@ -4,18 +4,18 @@ body {
   font-weight: 700;
 }
 
-#add-button {
+#buttonAtIndexAdd {
   box-shadow: 0px 0px 10px black;
   border-radius: 20px 20px;
   margin: 15px;
   cursor: pointer;
 }
 
-#add-button:hover {
+#buttonAtIndexAdd:hover {
   background-color: rgb(241, 238, 238);
 }
 
-#add-button:active {
+#buttonAtIndexAdd:active {
   background-color: rgb(241, 238, 238);
   box-shadow: 0 5px #666;
   transform: translateY(4px);
@@ -86,7 +86,6 @@ body {
   background: #f1f1f1;
 }
 
-.form-container input[type=text]:focus,
 .form-container input[type=text]:focus {
   background-color: #ddd;
   outline: none;
@@ -101,10 +100,23 @@ body {
   width: 100%;
   margin-bottom: 10px;
   opacity: 0.8;
+	border-radius: 10px 10px;
+}
+
+.form-container .save {
+  width: 49%;
+}
+
+.form-container .next {
+  background-color: blue;
+	width: 49%;
 }
 
 .form-container .cancel {
   background-color: red;
+}
+.form-container .delete {
+  background-color: black;
 }
 
 .form-container .btn:hover {
