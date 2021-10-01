@@ -26,6 +26,20 @@ class TaskTodo {
   }
 }
 
+for (let i = 0; i < localStorage.length; i++) {
+  if (localStorage.getItem(i)) {
+    let objFromLocalStorage = JSON.parse(localStorage.getItem(i));
+    createItemTodoFromLocalStorage(i, objFromLocalStorage);
+    
+    if (objFromLocalStorage.status === "started") {
+      itemToNextColumn(i);
+    } else if (objFromLocalStorage.status === "finished") {
+      itemToNextColumn(i);
+      itemToNextColumn(i);
+    }
+  }
+}
+
 myAddButton.onclick = () => createItemTodo();
 
 let createItemUniqueId = () => {
@@ -53,10 +67,12 @@ function changePriorityAdd(element) {
   }
 }
 
+// Open the "Add Todo" window.
 function openAddForm() {
   indexAddTask.style.display = "block";
 }
 
+// Close the "Add Todo" window.
 function closeAddForm() {
   indexAddTask.style.display = "none";
   myTitle.value = "";
@@ -72,6 +88,7 @@ function openItem(id) {
   myTaskTitle.innerHTML = itemsCreatedObj[id].title;
   myTaskDescription.value = itemsCreatedObj[id].description;
   auxDeleteItem.setAttribute("onclick", `deleteItem(${id})`);
+	auxItemSaveEdit.setAttribute("onclick", `saveItemTodo(${id})`);
   auxItemToNextColumn.setAttribute("onclick", `itemToNextColumn(${id})`);
   myTaskDueDateDetails.value = itemsCreatedObj[id].dueDate;
   myTaskPriorityDetails.innerHTML = itemsCreatedObj[id].priority;
@@ -89,7 +106,7 @@ function openItem(id) {
 
   if (itemsCreatedObj[id].status === "finished") {
     auxItemToNextColumn.style.backgroundColor = "grey";
-  }
+  } else auxItemToNextColumn.style.backgroundColor = "blue";
 }
 
 // Removes Todo from the layout and database.
@@ -100,24 +117,33 @@ function deleteItem(id) {
   itemsCreatedObj[id] = undefined;
   let itemRemoval = document.getElementById(`${id}`);
   itemRemoval.remove();
+  localStorage.removeItem(id);
 }
 
-// Close the "Add Todo" window.
+// Close the "Todo details" window.
 function closeItem() {
   document.getElementById("myTask").style.display = "none";
+}
+
+function saveItemTodo(id) {
+  itemsCreatedObj[id].description = myTaskDescription.value;
+	localStorage.setItem(id, JSON.stringify(itemsCreatedObj[id]));
+	myTaskDescription.value = "";
+	closeItem();
 }
 
 // Moves the Todo trough the stages of completion.
 function itemToNextColumn(id) {
   let itemMove = document.getElementById(`${id}`);
-  console.log(itemsCreatedObj[id].status)
   if (itemsCreatedObj[id].status === "unstarted") {
     itemsCreatedObj[id].status = "started";
     columnInitiated.append(itemMove);
+		localStorage.setItem(id, JSON.stringify(itemsCreatedObj[id]));
   } else {
     itemsCreatedObj[id].status = "finished";
     columnFinished.append(itemMove);
     auxItemToNextColumn.style.backgroundColor = "grey";
+    localStorage.setItem(id, JSON.stringify(itemsCreatedObj[id]));
   }
 }
 
@@ -132,8 +158,20 @@ function createItemTodo() {
     itemsCreatedObj[newItem.id] = new TaskTodo("unstarted", myTitle.value, myDescriptionAdd.value, myTaskDueDateAdd.value, myTaskPriorityAdd.value);
     newItem.innerHTML = itemsCreatedObj[newItem.id].title;
     columnUninitiated.append(newItem);
-    console.log(itemsCreatedObj[newItem.id]);
     newItem.setAttribute("onclick", `openItem(${newItem.id})`);
+
+    localStorage.setItem(newItem.id, JSON.stringify(itemsCreatedObj[newItem.id]));
+
     closeAddForm();
   }
+}
+
+function createItemTodoFromLocalStorage(id, objFromLocalStorage) {
+  const newItem = document.createElement('div');
+  newItem.classList.add('items');
+  newItem.setAttribute('id', id)
+  itemsCreatedObj[newItem.id] = new TaskTodo(objFromLocalStorage.status, objFromLocalStorage.title, objFromLocalStorage.description, objFromLocalStorage.dueDate, objFromLocalStorage.priority);
+  newItem.innerHTML = itemsCreatedObj[newItem.id].title;
+  columnUninitiated.append(newItem);
+  newItem.setAttribute("onclick", `openItem(${newItem.id})`);
 }
