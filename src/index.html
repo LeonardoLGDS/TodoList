@@ -9,7 +9,7 @@
   <body>
     <h1></h1>
 
-    <div id="buttonAtIndexAdd" onclick="openForm()">add</div>
+    <div id="buttonAtIndexAdd" onclick="openAddForm()">add</div>
 
     <div id="containerText" class="block">
       <span class="columnsText">uninitiated</span>
@@ -27,29 +27,52 @@
 
     <div class="form-popup" id="indexAddTask">
       <form class="form-container">
-        <h1>Add task</h1>
-
+        <h2>Add task</h2>
+				<p id="addTaskErrorMessageTitle"></p>
         <label for="title"><b>Title</b></label><br>
         <input type="text" placeholder="Enter title" id="title" name="title" required>
-
-        <label for="description"><b>Description</b></label><br>
-        <input type="text" placeholder="Enter a description" id="description" name="description" required>
+				<div class="divDueDatePriority">
+					<span>
+						<label ><b>Due Date</b></label><br>
+						<input type="date" id="dueDateAdd">
+					</span>
+					<span>
+						<label ><b>Priority</b></label><br>
+						<div class="dropdown">
+							<button id="priorityAdd" class="dropbtn" type="button"></button>
+							<div class="dropdown-content">
+								<span onclick="changePriorityAdd(this)">Low</span><br>
+								<span onclick="changePriorityAdd(this)">Medium</span><br>
+								<span onclick="changePriorityAdd(this)">High</span>
+							</div>
+						</div>
+					</span>
+				</div>
+        <br><label for="description"><b>Description</b></label><br>
+        <textarea maxlength="500" placeholder="Enter a description" id="description" name="description" class="textarea"></textarea>
 
         <button id="addButton" type="button" class="btn">Add</button>
-        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        <button type="button" class="btn cancel" onclick="closeAddForm()">Close</button>
       </form>
     </div>
 		
    <div class="form-popup" id="myTask">
       <form class="form-container">
         <h2>Task details</h2>
-	
-        <h3 id="taskTitle"><b></b></h3><br>
-				<label id="dueDate"><b></b></label><br>
-				<label id="priority"><b></b></label><br>
+        <h3 id="taskTitle"><b></b></h3>
 				
-        <input type="text" placeholder="Enter a description" id="taskDescription" name="description">
-
+				<div class="divDueDatePriority">
+					<span>
+						<label> <b>Due date</b></label><br>
+						<input type="date" id="dueDateDetails" readonly>
+					</span>
+					<span>
+						<label ><b>Priority</b></label><br>
+						<button id="priorityDetails" type="button"></button>
+					</span>
+				</div>
+				
+        <br><textarea maxlength="500" placeholder="Enter a description" id="taskDescription" class="textarea"></textarea>
         <button id="saveButton" type="button" class="btn save">Save</button>
 				<button id="nextButton" type="button" class="btn next">Next</button>
         <button id="deleteButton" type="button" class="btn delete">Delete</button>
