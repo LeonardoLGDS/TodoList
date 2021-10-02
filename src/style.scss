@@ -148,9 +148,9 @@ body {
 }
 
 .textarea {
-  height: 60px;
-	width: 290px;
+	min-height: 60px;
 	max-width: 290px;
+	min-width: 290px;
 }
 
 .form-container .save {
